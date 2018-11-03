@@ -20,9 +20,12 @@ def init_dataset():
 
 def clustering(data, n_clusters):
 
-	ac = AgglomerativeClustering(n_clusters=n_clusters, linkage='complete', affinity='l2')
+	ac = AgglomerativeClustering(n_clusters=n_clusters, linkage='average', affinity='euclidean')
 
+	t0 = time()
 	ac.fit(data)
+	tf = time()
+	print("Done in %0.3fs" % (tf - t0))
 
 	return ac
 
@@ -45,7 +48,7 @@ def analysis(data, n_clusters, ac):
 	fig.savefig("histogram.png")
 
 	# Metrics of quality
-	print("Silhouette Coefficient: %0.3f" % metric.silhouette_score(data, ac.labels_, metric='l2'))
+	print("Silhouette Coefficient: %0.3f" % metric.silhouette_score(data, ac.labels_, metric='euclidean'))
 	print("Davies-Bouldin Index: %0.3f" % metric.davies_bouldin_score(data, ac.labels_))
 	print("Calinski Index: %0.3f" % metric.calinski_harabaz_score(data, ac.labels_))
 
