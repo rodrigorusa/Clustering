@@ -6,13 +6,12 @@ from time import time
 from sklearn.cluster import KMeans
 
 parser = argparse.ArgumentParser(description='Experiment 01')
-parser.add_argument('-csv', dest='csv', type=str, required=True)
 parser.add_argument('-maxk', dest='max_n_clusters', type=int, required=True)
 parser.add_argument('-step', dest='step', type=int, required=True)
 
-def init_dataset(file):
+def init_dataset():
 	# Read csv
-    df = pd.read_csv(file)
+    df = pd.read_csv('bags.csv', header=None)
 
     return df
 
@@ -27,7 +26,7 @@ def clustering(data, max_n_clusters, step):
 	# For each number of cluster
 	for i in range(0, len(clusters)):
 		# Create model
-		km = KMeans(n_clusters=clusters[i], n_jobs=8)
+		km = KMeans(n_clusters=clusters[i], init="random", n_init=100, max_iter=500, n_jobs=8, algorithm="full")
 
 		print("Clustering data with %s clusters..." % clusters[i])
 
@@ -55,7 +54,7 @@ def main():
 	args = parser.parse_args()
 
 	# Load dataset
-	data = init_dataset(args.csv)
+	data = init_dataset()
 
 	# Clustering data
 	clustering(data, args.max_n_clusters, args.step)
