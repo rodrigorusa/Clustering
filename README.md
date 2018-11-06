@@ -9,9 +9,9 @@ Executes the K-Means algorithm for a range of k values and plots the Cost curve 
 
 python3 experiment_01.py [-maxk -step]
 
-	**-maxk - maximum value of k
+	**-maxk** - maximum value of k
 
-	**-step - step to skip between each value of k
+	**-step** - step to skip between each value of k
 
 ## Experiment 02
 
@@ -21,7 +21,7 @@ Executes the K-Means algorithm for a value of k and analyze the medoids and thei
 
 python3 experiment_02.py [-k]
 
-	**-k - number of clusters
+	**-k** - number of clusters
 
 ## Experiment 03
 
@@ -29,11 +29,11 @@ Executes the PCA to reduce the data dimensionality and executes after that the K
 
 ### To execute:
 
-python3 experiment_03.py [-k]
+python3 experiment_03.py [-dim -k]
 
-	**-dim - number of dimensions to keep
+	**-dim** - number of dimensions to keep
 
-	**-k - number of clusters
+	**-k** - number of clusters
 
 ## Experiment 04
 
@@ -43,4 +43,4 @@ Executes the Agglomerative Clustering algorithm for a value of k and analyze the
 
 python3 experiment_04.py [-k]
 
-	**-k - number of clusters
+	**-k** - number of clusters
